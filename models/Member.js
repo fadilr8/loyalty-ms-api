@@ -2,7 +2,7 @@ const { Sequelize, DataTypes } = require('sequelize');
 const db = require('../config/database');
 
 const Member = db.define(
-  'Members',
+  'Member',
   {
     id: {
       allowNull: false,

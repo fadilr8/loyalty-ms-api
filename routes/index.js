@@ -6,12 +6,16 @@ const useChecker = express.Router();
 
 const authRoute = require('./auth');
 const memberRoute = require('./members');
+const tierRoute = require('./tiers');
+const itemRoute = require('./items');
 
 const auth = require('../middleware/auth');
 
 router.use('/auth', authRoute);
 
 useChecker.use('/members', auth, memberRoute);
+useChecker.use('/tiers', auth, tierRoute);
+useChecker.use('/items', auth, itemRoute);
 
 app.use(router);
 app.use(useChecker);

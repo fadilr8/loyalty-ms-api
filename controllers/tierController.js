@@ -1,46 +1,45 @@
-const Member = require('../models/Member');
+const Tier = require('../models/Tier');
 
 async function index(req, res) {
-  const members = await Member.findAll();
+  const tiers = await Tier.findAll();
 
-  res.status(200).json({ status: true, data: members });
+  res.status(200).json({ status: true, data: tiers });
 }
 
 async function show(req, res) {
-  const member = await Member.findByPk(req.params.id);
+  const tier = await Tier.findByPk(req.params.id);
 
-  res.status(200).json({ status: true, data: member });
+  res.status(200).json({ status: true, data: tier });
 }
 
 async function create(req, res) {
   let body = req.body;
-  body.join_date = new Date();
 
-  await Member.create(req.body);
+  await Tier.create(body);
 
   res.status(201).json({ status: true, message: 'Created successfully' });
 }
 
 async function update(req, res) {
-  const member = await Member.findByPk(req.params.id);
+  const tier = await Tier.findByPk(req.params.id);
 
-  if (!member) {
+  if (!tier) {
     return res.status(404).json({ status: false, message: 'Not Found' });
   }
 
-  await member.update(req.body);
+  await tier.update(req.body);
 
   res.status(200).json({ status: true, message: 'Updated successfully' });
 }
 
 async function destroy(req, res) {
-  const member = await Member.findByPk(req.params.id);
+  const tier = await Tier.findByPk(req.params.id);
 
-  if (!member) {
+  if (!tier) {
     return res.status(404).json({ status: false, message: 'Not Found' });
   }
 
-  await member.destroy();
+  await tier.destroy();
 
   res.status(200).json({ status: true, message: 'Deleted successfully' });
 }
