@@ -1,10 +1,8 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const db = require('../config/database');
 
-const Item = require('./Item');
-
-const Transaction = db.define(
-  'Transaction',
+const LoyaltyBenefit = db.define(
+  'LoyaltyBenefit',
   {
     id: {
       allowNull: false,
@@ -12,38 +10,27 @@ const Transaction = db.define(
       primaryKey: true,
       type: Sequelize.INTEGER,
     },
-    member_id: {
+    program_id: {
       allowNull: true,
       type: Sequelize.INTEGER,
       references: {
-        model: 'members',
+        model: 'loyalty_programs',
         key: 'id',
       },
     },
-    date: {
+    percentage: {
       allowNull: true,
-      type: Sequelize.DATEONLY,
+      type: Sequelize.INTEGER,
     },
-    total: {
+    points: {
       allowNull: true,
       type: Sequelize.INTEGER,
     },
   },
   {
     timestamps: false,
-    tableName: 'transactions',
+    tableName: 'loyalty_benefits',
   }
 );
 
-Transaction.belongsToMany(Item, {
-  through: 'transaction_items',
-  foreignKey: 'transaction_id',
-});
-
-Item.belongsToMany(Transaction, {
-  through: 'transaction_items',
-  foreignKey: 'item_id',
-});
-
-
-module.exports = Transaction;
+module.exports = LoyaltyBenefit;

@@ -9,6 +9,7 @@ const memberRoute = require('./members');
 const tierRoute = require('./tiers');
 const itemRoute = require('./items');
 const referralRoute = require('./referrals');
+const loyaltyRoute = require('./programs')
 
 const auth = require('../middleware/auth');
 
@@ -18,6 +19,7 @@ useChecker.use('/members', auth, memberRoute);
 useChecker.use('/tiers', auth, tierRoute);
 useChecker.use('/items', auth, itemRoute);
 useChecker.use('/referrals', auth, referralRoute);
+useChecker.use('/programs', auth, loyaltyRoute);
 
 app.use(router);
 app.use(useChecker);
