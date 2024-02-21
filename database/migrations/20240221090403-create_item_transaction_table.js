@@ -3,41 +3,41 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('referrals', {
+    await queryInterface.createTable('item_transaction', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      member_id: {
+      item_id: {
         allowNull: true,
         type: Sequelize.INTEGER,
         references: {
-          model: 'members',
+          model: 'items',
           key: 'id',
         },
       },
-      referral_id: {
+      transaction_id: {
         allowNull: true,
         type: Sequelize.INTEGER,
         references: {
-          model: 'members',
+          model: 'transactions',
           key: 'id',
         },
       },
-      date: {
+      qty: {
         allowNull: true,
-        type: Sequelize.DATEONLY,
+        type: Sequelize.INTEGER,
       },
-      transaction_number: {
+      subtotal: {
         allowNull: true,
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
     });
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('referrals');
+    await queryInterface.dropTable('item_transaction');
   },
 };

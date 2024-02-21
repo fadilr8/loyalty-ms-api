@@ -1,4 +1,5 @@
 const Member = require('../models/Member');
+const Referral = require('../models/Referral');
 
 async function index(req, res) {
   const members = await Member.findAll();
@@ -7,7 +8,13 @@ async function index(req, res) {
 }
 
 async function show(req, res) {
-  const member = await Member.findByPk(req.params.id);
+  const member = await Member.findByPk(req.params.id, {
+    include: {
+      model: Referral,
+      as: 'referral_data',
+      include: { model: Member, as: 'referral' },
+    },
+  });
 
   res.status(200).json({ status: true, data: member });
 }

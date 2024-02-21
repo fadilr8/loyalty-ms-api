@@ -1,10 +1,8 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const db = require('../config/database');
 
-const Member = require('./Member');
-
-const Referral = db.define(
-  'Referral',
+const PointHistory = db.define(
+  'PointHistory',
   {
     id: {
       allowNull: false,
@@ -20,11 +18,11 @@ const Referral = db.define(
         key: 'id',
       },
     },
-    referral_id: {
+    transaction_id: {
       allowNull: true,
       type: Sequelize.INTEGER,
       references: {
-        model: 'members',
+        model: 'transactions',
         key: 'id',
       },
     },
@@ -32,18 +30,19 @@ const Referral = db.define(
       allowNull: true,
       type: Sequelize.DATEONLY,
     },
-    transaction_number: {
+    type: {
       allowNull: true,
-      type: Sequelize.STRING,
+      type: Sequelize.ENUM('earned', 'redeemed'),
     },
+    point: {
+      allowNull: true,
+      type: Sequelize.INTEGER
+    }
   },
   {
     timestamps: false,
-    tableName: 'referrals',
+    tableName: 'point_history',
   }
 );
 
-Member.hasOne(Referral, { foreignKey: 'member_id', as: 'referral_data' });
-Referral.belongsTo(Member, { foreignKey: 'referral_id', as: 'referral' });
-
-module.exports = Referral;
+module.exports = PointHistory;

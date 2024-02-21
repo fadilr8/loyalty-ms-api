@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('referrals', {
+    await queryInterface.createTable('transactions', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -18,26 +18,18 @@ module.exports = {
           key: 'id',
         },
       },
-      referral_id: {
-        allowNull: true,
-        type: Sequelize.INTEGER,
-        references: {
-          model: 'members',
-          key: 'id',
-        },
-      },
       date: {
         allowNull: true,
         type: Sequelize.DATEONLY,
       },
-      transaction_number: {
+      total: {
         allowNull: true,
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
     });
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('referrals');
+    await queryInterface.dropTable('transactions');
   },
 };
