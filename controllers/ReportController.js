@@ -1,5 +1,7 @@
 const { fn, col, Op } = require('sequelize');
+
 const ExcelJS = require('exceljs');
+const PDFDocument = require('pdfkit');
 const fs = require('fs');
 
 const Member = require('../models/Member');
@@ -60,24 +62,62 @@ async function exportExcel(req, res) {
   const fileName = './downloads/members.xlsx';
   await workbook.xlsx.writeFile(fileName);
 
-  // Download the file
   fs.readFile(fileName, (err, data) => {
     if (err) {
       console.error('Error reading file:', err);
       return;
     }
-    console.log('File successfully read');
+    console.log('File successfully exported!');
 
-    // Set headers for the download
     const headers = {
       'Content-Type':
         'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
       'Content-Disposition': 'attachment; filename=members.xlsx',
     };
 
-    // Send the file as a response
     res.set(headers).send(data);
   });
+}
+
+async function exportPdf(req, res) {
+  const data = await getPointHistoryFunc(req);
+
+  const doc = new PDFDocument();
+
+  res.setHeader('Content-Type', 'application/pdf');
+  res.setHeader(
+    'Content-Disposition',
+    'attachment; filename="exported_data.pdf"'
+  );
+
+  doc.pipe(res);
+
+  // Add content to the PDF
+  doc.fontSize(16).text('Member Data', { align: 'center' });
+  doc.moveDown();
+
+  // Loop through the data and add it to the PDF
+  data.forEach((member) => {
+    doc.fontSize(14).text(`Name: ${member.name}`);
+    doc.text(`Email: ${member.email}`);
+    doc.text(`Remaining Points: ${member.remaining_points}`);
+    doc.text(`Earned Points: ${member.earned_points}`);
+    doc.moveDown();
+
+    // Add point history for each member
+    member.point_history.forEach((history) => {
+      doc.text(`Transaction Number: ${history.transaction_number}`);
+      doc.text(`Date: ${history.date}`);
+      doc.text(`Type: ${history.type}`);
+      doc.text(`Points: ${history.points}`);
+      doc.moveDown();
+    });
+
+    doc.moveDown();
+  });
+
+  // Finalize the PDF and end the response
+  doc.end();
 }
 
 const getPointHistoryFunc = async (req) => {
@@ -146,4 +186,4 @@ const getPointHistoryFunc = async (req) => {
   return data;
 };
 
-module.exports = { getPointHistory, exportExcel };
+module.exports = { getPointHistory, exportExcel, exportPdf };

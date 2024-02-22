@@ -11,4 +11,8 @@ router.get('/export-excel/:id/:type', (req, res) => {
   reportController.exportExcel(req, res);
 })
 
+router.get('/export-pdf/:id/:type', (req, res) => {
+  reportController.exportPdf(req, res);
+})
+
 module.exports = router;
