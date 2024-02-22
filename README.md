@@ -33,7 +33,6 @@ npm run dev
 
 ## Authors
 Muhammad Fadhil Rahadiansyah
-
 fadilr0808@gmail.com  
 Bandung, Jawa Barat
 
