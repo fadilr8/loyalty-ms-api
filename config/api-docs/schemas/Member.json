@@ -1,0 +1,34 @@
+{
+  "Member": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "integer"
+      },
+      "email": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "join_date": {
+        "type": "string"
+      },
+      "phone": {
+        "type": "string"
+      },
+      "points": {
+        "type": "integer"
+      },
+      "status": {
+        "type": "boolean"
+      },
+      "birthday": {
+        "type": "string"
+      },
+      "address": {
+        "type": "string"
+      }
+    }
+  }
+}

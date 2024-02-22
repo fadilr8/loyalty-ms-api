@@ -1,0 +1,113 @@
+{
+  "/members": {
+    "post": {
+      "summary": "Create Member Data",
+      "tags": [
+        "Member"
+      ],
+      "security": [
+        {
+          "bearerAuth": []
+        }
+      ],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "description": "Email of Member"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Name of Member"
+                },
+                "phone": {
+                  "type": "string",
+                  "description": "Phone Number of Member"
+                },
+                "birthday": {
+                  "type": "string",
+                  "description": "Birthday",
+                  "example": "06-16-2000"
+                },
+                "address": {
+                  "type": "string",
+                  "description": "Address of Member"
+                }
+              },
+              "required": [
+                "email",
+                "name",
+                "phone",
+                "birthday",
+                "address"
+              ]
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "boolean",
+                    "description": "Response general Status"
+                  },
+                  "message": {
+                    "type": "string",
+                    "description": "Response Message"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/members/": {
+    "get": {
+      "summary": "Get all members",
+      "tags": [
+        "Member"
+      ],
+      "security": [
+        {
+          "bearerAuth": []
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Array of Members",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "boolean",
+                    "description": "Response general Status"
+                  },
+                  "data": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Member"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
