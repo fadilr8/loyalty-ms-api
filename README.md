@@ -30,6 +30,14 @@ npm install
 ```
 npm run dev
 ```
+* Run Migration
+```
+npx sequelize-cli db:migrate
+```
+* Run Seeders
+```
+npx sequelize-cli db:seed:all
+```
 
 ## Authors
 Muhammad Fadhil Rahadiansyah
