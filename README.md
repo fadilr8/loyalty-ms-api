@@ -38,6 +38,7 @@ npm run dev
   Indonesia
 
 Muhammad Fadhil Rahadiansyah
-fadilr0808@gmail.com
+
+fadilr0808@gmail.com  
 ex. [@DomPizzie](https://twitter.com/dompizzie)
 
