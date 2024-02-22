@@ -11,6 +11,8 @@ const itemRoute = require('./items');
 const loyaltyRoute = require('./programs')
 const communityRoute = require('./community');
 const transactionRoute = require('./transactions')
+const pointRoute = require('./points');
+const reportRoute = require('./reports');
 
 const auth = require('../middleware/auth');
 
@@ -22,6 +24,8 @@ useChecker.use('/items', auth, itemRoute);
 useChecker.use('/programs', auth, loyaltyRoute);
 useChecker.use('/community', auth, communityRoute);
 useChecker.use('/transactions', auth, transactionRoute);
+useChecker.use('/points', auth, pointRoute);
+useChecker.use('/reports', auth, reportRoute);
 
 app.use(router);
 app.use(useChecker);
