@@ -32,8 +32,13 @@ npm run dev
 ```
 
 ## Authors
-Muhammad Fadhil Rahadiansyah
-fadilr0808@gmail.com
-Bandung, Jawa Barat
-Indonesia
+  Muhammad Fadhil Rahadiansyah
+  fadilr0808@gmail.com
+  Bandung, Jawa Barat
+  Indonesia
+
+Contributors names and contact info
+
+ex. Dominique Pizzie  
+ex. [@DomPizzie](https://twitter.com/dompizzie)
 
