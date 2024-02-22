@@ -37,7 +37,7 @@ npm run dev
   Bandung, Jawa Barat
   Indonesia
 
-Contributors names and contact info
+Muhammad Fadhil Rahadiansyah
 
 ex. Dominique Pizzie  
 ex. [@DomPizzie](https://twitter.com/dompizzie)
