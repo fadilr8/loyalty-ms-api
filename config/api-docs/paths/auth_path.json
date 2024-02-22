@@ -1,0 +1,64 @@
+{
+  "/auth/login": {
+    "post": {
+      "summary": "Get User Admin Token.",
+      "tags": [
+        "Auth"
+      ],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "description": "Admin's Email"
+                },
+                "password": {
+                  "type": "string",
+                  "description": "Password"
+                },
+                "remember": {
+                  "type": "boolean",
+                  "description": "Remember me Trigger"
+                }
+              },
+              "required": [
+                "email",
+                "password",
+                "remember"
+              ]
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "OK",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "boolean",
+                    "description": "Response general Status"
+                  },
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "token": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

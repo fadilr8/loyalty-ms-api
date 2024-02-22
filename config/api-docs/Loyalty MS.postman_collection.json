@@ -1,0 +1,1179 @@
+{
+	"info": {
+		"_postman_id": "6ceb31c7-7fcc-47e7-aef8-e9d469cf83d6",
+		"name": "Loyalty MS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3676962"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@mail.com\",\r\n    \"password\": \"p@ssw0rD\",\r\n    \"remember\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Members",
+			"item": [
+				{
+					"name": "Get Members",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBtYWlsLmNvbSIsImlhdCI6MTcwODQ0NjQ4NSwiZXhwIjoxNzA4NTMyODg1fQ.S_LZfRa-jef1EBynMCYVoiZ45ONsX6p-5orSN19iYWw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/members",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"members"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Member",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBtYWlsLmNvbSIsImlhdCI6MTcwODU0NzUyNSwiZXhwIjoxNzQwMDgzNTI1fQ.WROe9nJOJiaa_mQ9M0XHcgNZ6Rz1aXk9LEmFYDdrMgI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/members/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"members",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Member",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBtYWlsLmNvbSIsImlhdCI6MTcwODQ0NjQ4NSwiZXhwIjoxNzA4NTMyODg1fQ.S_LZfRa-jef1EBynMCYVoiZ45ONsX6p-5orSN19iYWw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"membersatu@mail.com\",\r\n    \"name\": \"Member Satu\",\r\n    \"phone\": \"6282233445544\",\r\n    \"birthday\": \"06-16-2000\",\r\n    \"address\": \"Jl Disana\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/members",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"members"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Member",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBtYWlsLmNvbSIsImlhdCI6MTcwODQ0NjQ4NSwiZXhwIjoxNzA4NTMyODg1fQ.S_LZfRa-jef1EBynMCYVoiZ45ONsX6p-5orSN19iYWw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"membersatu@mail.com\",\r\n    \"name\": \"Member Satu\",\r\n    \"phone\": \"6282233445544\",\r\n    \"birthday\": \"06-22-2000\",\r\n    \"address\": \"Jl Disana\",\r\n    \"status\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/members/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"members",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Member",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBtYWlsLmNvbSIsImlhdCI6MTcwODQ0NjQ4NSwiZXhwIjoxNzA4NTMyODg1fQ.S_LZfRa-jef1EBynMCYVoiZ45ONsX6p-5orSN19iYWw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/members/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"members",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tier",
+			"item": [
+				{
+					"name": "Get Tiers",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBtYWlsLmNvbSIsImlhdCI6MTcwODQ0NjQ4NSwiZXhwIjoxNzA4NTMyODg1fQ.S_LZfRa-jef1EBynMCYVoiZ45ONsX6p-5orSN19iYWw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/tiers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"tiers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Tier",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBtYWlsLmNvbSIsImlhdCI6MTcwODQ0NjQ4NSwiZXhwIjoxNzA4NTMyODg1fQ.S_LZfRa-jef1EBynMCYVoiZ45ONsX6p-5orSN19iYWw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/tiers/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"tiers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Tier",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBtYWlsLmNvbSIsImlhdCI6MTcwODQ0NjQ4NSwiZXhwIjoxNzA4NTMyODg1fQ.S_LZfRa-jef1EBynMCYVoiZ45ONsX6p-5orSN19iYWw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Basic\",\r\n    \"min_points\": 100,\r\n    \"max_points\": 500\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/tiers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"tiers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Tier",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBtYWlsLmNvbSIsImlhdCI6MTcwODQ0NjQ4NSwiZXhwIjoxNzA4NTMyODg1fQ.S_LZfRa-jef1EBynMCYVoiZ45ONsX6p-5orSN19iYWw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Basic\",\r\n    \"min_points\": 0,\r\n    \"max_points\": 100\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/tiers/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"tiers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Tier",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBtYWlsLmNvbSIsImlhdCI6MTcwODQ0NjQ4NSwiZXhwIjoxNzA4NTMyODg1fQ.S_LZfRa-jef1EBynMCYVoiZ45ONsX6p-5orSN19iYWw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/tiers/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"tiers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Item",
+			"item": [
+				{
+					"name": "Get Items",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBtYWlsLmNvbSIsImlhdCI6MTcwODQ0NjQ4NSwiZXhwIjoxNzA4NTMyODg1fQ.S_LZfRa-jef1EBynMCYVoiZ45ONsX6p-5orSN19iYWw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/items",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBtYWlsLmNvbSIsImlhdCI6MTcwODQ0NjQ4NSwiZXhwIjoxNzA4NTMyODg1fQ.S_LZfRa-jef1EBynMCYVoiZ45ONsX6p-5orSN19iYWw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/items/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"items",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBtYWlsLmNvbSIsImlhdCI6MTcwODQ0NjQ4NSwiZXhwIjoxNzA4NTMyODg1fQ.S_LZfRa-jef1EBynMCYVoiZ45ONsX6p-5orSN19iYWw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Botol\",\r\n    \"price\": 30000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/items",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBtYWlsLmNvbSIsImlhdCI6MTcwODQ0NjQ4NSwiZXhwIjoxNzA4NTMyODg1fQ.S_LZfRa-jef1EBynMCYVoiZ45ONsX6p-5orSN19iYWw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Pensils\",\r\n    \"price\": 15000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/items/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"items",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBtYWlsLmNvbSIsImlhdCI6MTcwODQ0NjQ4NSwiZXhwIjoxNzA4NTMyODg1fQ.S_LZfRa-jef1EBynMCYVoiZ45ONsX6p-5orSN19iYWw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/items/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"items",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Loyalty Program",
+			"item": [
+				{
+					"name": "Get Loyalty Programs",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBtYWlsLmNvbSIsImlhdCI6MTcwODU0NzUyNSwiZXhwIjoxNzQwMDgzNTI1fQ.WROe9nJOJiaa_mQ9M0XHcgNZ6Rz1aXk9LEmFYDdrMgI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/programs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"programs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Loyalty Programs",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBtYWlsLmNvbSIsImlhdCI6MTcwODU0NzUyNSwiZXhwIjoxNzQwMDgzNTI1fQ.WROe9nJOJiaa_mQ9M0XHcgNZ6Rz1aXk9LEmFYDdrMgI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Program Transaksi\",\r\n    \"from\": \"2024-01-01\",\r\n    \"to\": \"2024-12-12\",\r\n    \"benefits\": {\r\n        \"is_fixed\": true,\r\n        \"amount\": 100\r\n    },\r\n    \"tiers\": [\r\n        1,\r\n        2,\r\n        3\r\n    ],\r\n    \"transactional\": {\r\n        \"min_transaction\": 50000,\r\n        \"min_purchase\": 3,\r\n        \"first_purchase\": true\r\n    }\r\n    // \"community\": {\r\n    //     // \"get_member\": true\r\n    //     \"activity\": \"kopdar\"\r\n    //     // \"birtday_bonus\": true\r\n    // }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/programs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"programs"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Community",
+			"item": [
+				{
+					"name": "Add Referral",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBtYWlsLmNvbSIsImlhdCI6MTcwODU0NzUyNSwiZXhwIjoxNzQwMDgzNTI1fQ.WROe9nJOJiaa_mQ9M0XHcgNZ6Rz1aXk9LEmFYDdrMgI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"member_id\": 2,\r\n    \"referral_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/community/referral",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"community",
+								"referral"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Earn Activity Points",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBtYWlsLmNvbSIsImlhdCI6MTcwODU0NzUyNSwiZXhwIjoxNzQwMDgzNTI1fQ.WROe9nJOJiaa_mQ9M0XHcgNZ6Rz1aXk9LEmFYDdrMgI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"member_id\": 1,\r\n    \"activity\": \"kopdar\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/community/activity",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"community",
+								"activity"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transaction",
+			"item": [
+				{
+					"name": "Add Transaction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBtYWlsLmNvbSIsImlhdCI6MTcwODU0NzUyNSwiZXhwIjoxNzQwMDgzNTI1fQ.WROe9nJOJiaa_mQ9M0XHcgNZ6Rz1aXk9LEmFYDdrMgI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"member_id\": 2,\r\n    \"items\": [\r\n        {\r\n            \"item_id\": 1,\r\n            \"qty\": 1\r\n        },\r\n        {\r\n            \"item_id\": 2,\r\n            \"qty\": 2\r\n        },\r\n        {\r\n            \"item_id\": 3,\r\n            \"qty\": 5\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"transactions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Point",
+			"item": [
+				{
+					"name": "Redeem Points",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBtYWlsLmNvbSIsImlhdCI6MTcwODU0NzUyNSwiZXhwIjoxNzQwMDgzNTI1fQ.WROe9nJOJiaa_mQ9M0XHcgNZ6Rz1aXk9LEmFYDdrMgI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"member_id\": 2,\r\n    \"amount\": 100\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/api/points/redeem",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"points",
+								"redeem"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Report",
+			"item": [
+				{
+					"name": "Get Member Earned Points",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBtYWlsLmNvbSIsImlhdCI6MTcwODU0NzUyNSwiZXhwIjoxNzQwMDgzNTI1fQ.WROe9nJOJiaa_mQ9M0XHcgNZ6Rz1aXk9LEmFYDdrMgI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/reports/1/earned",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"reports",
+								"1",
+								"earned"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "2024-01-01",
+									"disabled": true
+								},
+								{
+									"key": "to",
+									"value": "2024-03-01",
+									"disabled": true
+								},
+								{
+									"key": "operator",
+									"value": "<",
+									"disabled": true
+								},
+								{
+									"key": "value",
+									"value": "1000",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "satu",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Member Redeemed Points",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBtYWlsLmNvbSIsImlhdCI6MTcwODU0NzUyNSwiZXhwIjoxNzQwMDgzNTI1fQ.WROe9nJOJiaa_mQ9M0XHcgNZ6Rz1aXk9LEmFYDdrMgI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/reports/1/redeemed?from=2024-01-01&to=2024-02-31&operator=<&value=1000&search=dua",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"reports",
+								"1",
+								"redeemed"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "2024-01-01"
+								},
+								{
+									"key": "to",
+									"value": "2024-02-31"
+								},
+								{
+									"key": "operator",
+									"value": "<"
+								},
+								{
+									"key": "value",
+									"value": "1000"
+								},
+								{
+									"key": "search",
+									"value": "dua"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Export Excel Earned Points",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBtYWlsLmNvbSIsImlhdCI6MTcwODU0NzUyNSwiZXhwIjoxNzQwMDgzNTI1fQ.WROe9nJOJiaa_mQ9M0XHcgNZ6Rz1aXk9LEmFYDdrMgI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/reports/export-excel/1/earned",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"reports",
+								"export-excel",
+								"1",
+								"earned"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "2024-01-01",
+									"disabled": true
+								},
+								{
+									"key": "to",
+									"value": "2024-03-01",
+									"disabled": true
+								},
+								{
+									"key": "operator",
+									"value": "<",
+									"disabled": true
+								},
+								{
+									"key": "value",
+									"value": "1000",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "satu",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Export Excel Redeemed Points",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBtYWlsLmNvbSIsImlhdCI6MTcwODU0NzUyNSwiZXhwIjoxNzQwMDgzNTI1fQ.WROe9nJOJiaa_mQ9M0XHcgNZ6Rz1aXk9LEmFYDdrMgI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/reports/export-excel/1/redeemed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"reports",
+								"export-excel",
+								"1",
+								"redeemed"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "2024-01-01",
+									"disabled": true
+								},
+								{
+									"key": "to",
+									"value": "2024-02-31",
+									"disabled": true
+								},
+								{
+									"key": "operator",
+									"value": "<",
+									"disabled": true
+								},
+								{
+									"key": "value",
+									"value": "1000",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "dua",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Export PDF Earned Points",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBtYWlsLmNvbSIsImlhdCI6MTcwODU0NzUyNSwiZXhwIjoxNzQwMDgzNTI1fQ.WROe9nJOJiaa_mQ9M0XHcgNZ6Rz1aXk9LEmFYDdrMgI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/reports/export-pdf/1/earned",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"reports",
+								"export-pdf",
+								"1",
+								"earned"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "2024-01-01",
+									"disabled": true
+								},
+								{
+									"key": "to",
+									"value": "2024-03-01",
+									"disabled": true
+								},
+								{
+									"key": "operator",
+									"value": "<",
+									"disabled": true
+								},
+								{
+									"key": "value",
+									"value": "1000",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "satu",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Export PDF Redeemed Points",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkBtYWlsLmNvbSIsImlhdCI6MTcwODU0NzUyNSwiZXhwIjoxNzQwMDgzNTI1fQ.WROe9nJOJiaa_mQ9M0XHcgNZ6Rz1aXk9LEmFYDdrMgI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/api/reports/export-pdf/1/redeemed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"reports",
+								"export-pdf",
+								"1",
+								"redeemed"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "2024-01-01",
+									"disabled": true
+								},
+								{
+									"key": "to",
+									"value": "2024-03-01",
+									"disabled": true
+								},
+								{
+									"key": "operator",
+									"value": "<",
+									"disabled": true
+								},
+								{
+									"key": "value",
+									"value": "1000",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "satu",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
