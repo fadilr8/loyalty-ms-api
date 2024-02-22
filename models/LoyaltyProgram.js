@@ -56,16 +56,21 @@ const LoyaltyProgram = db.define(
   }
 );
 
-LoyaltyProgram.hasOne(LoyaltyBenefit, { foreignKey: 'program_id' });
+LoyaltyProgram.hasOne(LoyaltyBenefit, {
+  foreignKey: 'program_id',
+  as: 'benefit',
+});
 LoyaltyBenefit.belongsTo(LoyaltyProgram, { foreignKey: 'program_id' });
 
 LoyaltyProgram.belongsToMany(Tier, {
   through: 'loyalty_tier',
   foreignKey: 'program_id',
+  as: 'tiers',
 });
 Tier.belongsToMany(LoyaltyProgram, {
   through: 'loyalty_tier',
   foreignKey: 'tier_id',
+  as: 'programs',
 });
 
 module.exports = LoyaltyProgram;

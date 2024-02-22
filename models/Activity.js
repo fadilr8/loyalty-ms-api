@@ -1,9 +1,8 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const db = require('../config/database');
-const Member = require('./Member');
 
-const PointHistory = db.define(
-  'PointHistory',
+const Activity = db.define(
+  'Activity',
   {
     id: {
       allowNull: false,
@@ -19,7 +18,7 @@ const PointHistory = db.define(
         key: 'id',
       },
     },
-    transaction_number: {
+    activity: {
       allowNull: true,
       type: Sequelize.STRING,
     },
@@ -27,21 +26,15 @@ const PointHistory = db.define(
       allowNull: true,
       type: Sequelize.DATEONLY,
     },
-    type: {
+    transaction_number: {
       allowNull: true,
-      type: Sequelize.ENUM('earned', 'redeemed'),
-    },
-    points: {
-      allowNull: true,
-      type: Sequelize.INTEGER,
+      type: Sequelize.STRING,
     },
   },
   {
     timestamps: false,
-    tableName: 'point_history',
+    tableName: 'activities',
   }
 );
 
-Member.hasMany(PointHistory, { foreignKey:'member_id', as: 'point_history' });
-
-module.exports = PointHistory;
+module.exports = Activity;

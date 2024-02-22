@@ -38,7 +38,6 @@ const loyaltyProgramSchema = object()
         'Benefits must be fixed if community is provided',
         function (value) {
           const { is_fixed } = this.parent.benefits || {};
-          console.log(!(value && Object.keys(value).length !== 0 && !is_fixed));
           return !(value && Object.keys(value).length !== 0 && !is_fixed);
         }
       ),

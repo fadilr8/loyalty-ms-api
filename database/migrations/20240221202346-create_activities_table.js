@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('point_history', {
+    await queryInterface.createTable('activities', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -18,7 +18,7 @@ module.exports = {
           key: 'id',
         },
       },
-      transaction_number: {
+      activity: {
         allowNull: true,
         type: Sequelize.STRING,
       },
@@ -26,18 +26,14 @@ module.exports = {
         allowNull: true,
         type: Sequelize.DATEONLY,
       },
-      type: {
+      transaction_number: {
         allowNull: true,
-        type: Sequelize.ENUM('earned', 'redeemed'),
+        type: Sequelize.STRING,
       },
-      points: {
-        allowNull: true,
-        type: Sequelize.INTEGER
-      }
     });
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('point_history');
+    await queryInterface.dropTable('activities');
   },
 };

@@ -5,7 +5,9 @@ const db = require('../config/database');
 const Tier = require('../models/Tier');
 
 async function index(req, res) {
-  const programs = await LoyaltyProgram.findAll();
+  const programs = await LoyaltyProgram.findAll({
+    include: { model: Tier, as: 'tiers' },
+  });
 
   res.status(200).json({ status: true, data: programs });
 }
@@ -44,8 +46,8 @@ async function create(req, res) {
     });
     const benefit = await LoyaltyBenefit.create(benefits, { transaction: t });
     const tiers = await Tier.findAll({ where: { id: body.tiers } });
-
-    await program.setLoyaltyBenefit(benefit, { transaction: t });
+    console.log(program);
+    await program.setBenefit(benefit, { transaction: t });
     await program.addTiers(tiers, { transaction: t });
 
     await t.commit();
