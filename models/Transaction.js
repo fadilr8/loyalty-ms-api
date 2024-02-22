@@ -2,6 +2,7 @@ const { Sequelize, DataTypes } = require('sequelize');
 const db = require('../config/database');
 
 const Item = require('./Item');
+const Member = require('./Member');
 
 const Transaction = db.define(
   'Transaction',
@@ -28,6 +29,10 @@ const Transaction = db.define(
       allowNull: true,
       type: Sequelize.INTEGER,
     },
+    transaction_number: {
+      allowNull: true,
+      type: Sequelize.STRING,
+    },
   },
   {
     timestamps: false,
@@ -35,13 +40,15 @@ const Transaction = db.define(
   }
 );
 
+Transaction.belongsTo(Member, { foreignKey:'member_id', as:'member' });
+
 Transaction.belongsToMany(Item, {
-  through: 'transaction_items',
+  through: 'item_transaction',
   foreignKey: 'transaction_id',
 });
 
 Item.belongsToMany(Transaction, {
-  through: 'transaction_items',
+  through: 'item_transaction',
   foreignKey: 'item_id',
 });
 

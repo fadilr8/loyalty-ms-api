@@ -46,7 +46,7 @@ async function create(req, res) {
     });
     const benefit = await LoyaltyBenefit.create(benefits, { transaction: t });
     const tiers = await Tier.findAll({ where: { id: body.tiers } });
-    console.log(program);
+
     await program.setBenefit(benefit, { transaction: t });
     await program.addTiers(tiers, { transaction: t });
 

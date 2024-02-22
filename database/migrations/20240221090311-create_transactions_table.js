@@ -26,6 +26,10 @@ module.exports = {
         allowNull: true,
         type: Sequelize.INTEGER,
       },
+      transaction_number: {
+        allowNull: true,
+        type: Sequelize.STRING,
+      },
     });
   },
 

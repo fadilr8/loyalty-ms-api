@@ -8,6 +8,8 @@ const db = require('../config/database');
 
 const { formatDate } = require('../utils/utils');
 const LoyaltyBenefit = require('../models/LoyaltyBenefit');
+const { Op } = require('sequelize');
+const { startOfDay, endOfDay } = require('date-fns');
 
 async function addReferral(req, res) {
   const { member_id, referral_id } = req.body;
@@ -52,26 +54,36 @@ async function addReferral(req, res) {
     const updateData = { date: new Date(), transaction_number: transactionNum };
     await reff.update(updateData, { transaction: t });
 
+    const today = new Date();
+    const startDate = startOfDay(today);
+    const endDate = endOfDay(today);
+
     const program = await LoyaltyProgram.findOne({
-      where: { get_member: true },
+      where: {
+        get_member: true,
+        from: { [Op.lte]: endDate },
+        to: { [Op.gte]: startDate },
+      },
       include: {
         model: LoyaltyBenefit,
         as: 'benefit',
       },
     });
 
-    const pointHistoryData = {
-      member_id: referral_id,
-      transaction_number: transactionNum,
-      date: new Date(),
-      type: 'earned',
-      points: program.benefit.points,
-    };
+    if (program) {
+      const pointHistoryData = {
+        member_id: referral_id,
+        transaction_number: transactionNum,
+        date: new Date(),
+        type: 'earned',
+        points: program.benefit.points,
+      };
 
-    await PointHistory.create(pointHistoryData, { transaction: t });
+      await PointHistory.create(pointHistoryData, { transaction: t });
 
-    const addedPoint = referral.points + program.benefit.points;
-    await referral.update({ points: addedPoint }, { transaction: t });
+      const addedPoint = referral.points + program.benefit.points;
+      await referral.update({ points: addedPoint }, { transaction: t });
+    }
 
     await t.commit();
 
@@ -112,25 +124,29 @@ async function addActivity(req, res) {
     const updateData = { date: new Date(), transaction_number: transactionNum };
     await act.update(updateData, { transaction: t });
 
+    const today = new Date();
+    const startDate = startOfDay(today);
+    const endDate = endOfDay(today);
+
     const program = await LoyaltyProgram.findOne({
-      where: { activity },
+      where: {
+        activity,
+        from: { [Op.lte]: endDate },
+        to: { [Op.gte]: startDate },
+      },
       include: {
         model: LoyaltyBenefit,
         as: 'benefit',
       },
     });
 
-    if (!program) {
-      return res
-        .status(404)
-        .json({ status: false, message: 'Activity Not Found' });
-    }
+    let benefitPoints = 0;
 
     const isBirthday = birthdayCheck(member);
     let birthdayBonus = 0;
-
+    let birthdayProgram = null;
     if (isBirthday) {
-      const birthdayProgram = await LoyaltyProgram.findOne({
+      birthdayProgram = await LoyaltyProgram.findOne({
         where: { birthday_bonus: true },
         include: {
           model: LoyaltyBenefit,
@@ -141,18 +157,24 @@ async function addActivity(req, res) {
       birthdayBonus = birthdayProgram.benefit.points;
     }
 
-    const pointHistoryData = {
-      member_id,
-      transaction_number: transactionNum,
-      date: new Date(),
-      type: 'earned',
-      points: program.benefit.points + birthdayBonus,
-    };
+    if (program) {
+      benefitPoints = program.benefit.points;
+    }
 
-    await PointHistory.create(pointHistoryData, { transaction: t });
+    if (program || birthdayProgram) {
+      const pointHistoryData = {
+        member_id,
+        transaction_number: transactionNum,
+        date: new Date(),
+        type: 'earned',
+        points: benefitPoints + birthdayBonus,
+      };
 
-    let addedPoint = member.points + program.benefit.points + birthdayBonus;
-    await member.update({ points: addedPoint }, { transaction: t });
+      await PointHistory.create(pointHistoryData, { transaction: t });
+
+      let addedPoint = member.points + benefitPoints + birthdayBonus;
+      await member.update({ points: addedPoint }, { transaction: t });
+    }
 
     await t.commit();
 
